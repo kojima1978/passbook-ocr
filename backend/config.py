@@ -3,7 +3,7 @@ Configuration for Passbook OCR Backend
 Optimized for NVIDIA RTX 3060 (12GB VRAM)
 """
 from pydantic_settings import BaseSettings
-from typing import Literal
+from typing import Literal, Optional
 
 
 class Settings(BaseSettings):
@@ -23,9 +23,9 @@ class Settings(BaseSettings):
     OCR_USE_GPU: bool = True
     OCR_GPU_MEM: int = 8000  # 8GB for PaddleOCR (out of 12GB total)
     OCR_LANG: str = "ch"  # PP-OCRv5 unified model (Chinese-Japanese-English)
-    OCR_DET_MODEL_DIR: str = None  # Use default PP-OCRv5 detection model
-    OCR_REC_MODEL_DIR: str = None  # Use default PP-OCRv5 recognition model
-    OCR_CLS_MODEL_DIR: str = None  # Use default classifier
+    OCR_DET_MODEL_DIR: Optional[str] = None  # Use default PP-OCRv5 detection model
+    OCR_REC_MODEL_DIR: Optional[str] = None  # Use default PP-OCRv5 recognition model
+    OCR_CLS_MODEL_DIR: Optional[str] = None  # Use default classifier
 
     # Performance Optimization for RTX 3060
     OCR_REC_BATCH_NUM: int = 6  # Optimal batch size for RTX 3060
